@@ -2,28 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/navigation_item_1"
-            android:checked="true"
+            android:id="@+id/nav_introduce"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Navigation Items 1"/>
+            android:title="Introduce" />
         <item
-            android:id="@+id/navigation_item_2"
+            android:id="@+id/nav_galgame"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Navigation Items 2"/>
+            android:title="Getchu.comの今月のタイトル" />
         <item
-            android:id="@+id/navigation_item_3"
+            android:id="@+id/nav_sdk"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="iPlay99 SDK (商業)" />
+        <item
+            android:id="@+id/nav_gamearea"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Navigation Items 3"/>
+            android:title="iPair 遊戲專區 (商業)" />
     </group>
 
-    <item android:title="Sub items">
+    <item android:title="Communicate">
         <menu>
             <item
-                android:icon="@drawable/ic_menu_send"
-                android:title="Sub item 1" />
-            <item
+                android:id="@+id/nav_about"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Sub item 2" />
+                android:title="About Me" />
         </menu>
     </item>
 </menu>
