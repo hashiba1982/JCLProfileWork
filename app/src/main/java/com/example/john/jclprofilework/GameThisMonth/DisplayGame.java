@@ -151,7 +151,7 @@ public class DisplayGame extends Fragment {
         }
 
         //年的選擇
-        yearAdapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_spinner_item, yearList);
+        yearAdapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_spinner_dropdown_item, yearList);
         yearAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
 
         sp_year = (Spinner)m_view.findViewById(R.id.sp_yearList);
