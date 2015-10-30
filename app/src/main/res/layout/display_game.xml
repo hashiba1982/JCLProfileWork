@@ -14,13 +14,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ll_topmenu"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:background="#5b68c1">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="前個月"
             android:id="@+id/btn_lastMonth" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="搜尋其他月份"
+            android:id="@+id/btn_searchOtherMonth"
+            android:background="#58b6ff" />
 
         <Spinner
             android:layout_width="match_parent"

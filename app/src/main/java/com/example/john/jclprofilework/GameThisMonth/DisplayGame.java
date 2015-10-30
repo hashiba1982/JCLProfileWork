@@ -40,7 +40,7 @@ public class DisplayGame extends Fragment {
     public Document doc;
     public Elements productRaw, products, years, months;
     public ArrayList<GameItem> gamelist;
-    public Button btn_otherMonth, btn_nextMonth, btn_lastMonth;
+    public Button btn_otherMonth, btn_nextMonth, btn_lastMonth, btn_searchOtherMonth;
     public DisplayGameAdapter displayGameAdapter;
     public GridView gv_gameGridView;
 
@@ -91,6 +91,8 @@ public class DisplayGame extends Fragment {
         btn_nextMonth.setOnClickListener(switchOtherPage);
         btn_otherMonth = (Button)getView().findViewById(R.id.btn_otherMonth);
         btn_otherMonth.setOnClickListener(switchOtherPage);
+        btn_searchOtherMonth = (Button)getView().findViewById(R.id.btn_searchOtherMonth);
+        btn_searchOtherMonth.setOnClickListener(switchOtherPage);
 
         //開始讀取資料
         if (saveMsg != null){
@@ -151,8 +153,8 @@ public class DisplayGame extends Fragment {
         }
 
         //年的選擇
-        yearAdapter = new ArrayAdapter<String>(m_context, android.R.layout.simple_spinner_dropdown_item, yearList);
-        yearAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        yearAdapter = new ArrayAdapter<String>(m_context, R.layout.myspinner, yearList);
+        yearAdapter.setDropDownViewResource(R.layout.myspinner);
 
         sp_year = (Spinner)m_view.findViewById(R.id.sp_yearList);
         sp_year.setAdapter(yearAdapter);
@@ -170,8 +172,8 @@ public class DisplayGame extends Fragment {
         });
 
         //月的選擇
-        monthAdapter = new ArrayAdapter<String>(m_context,android.R.layout.simple_spinner_item, monthList);
-        monthAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        monthAdapter = new ArrayAdapter<String>(m_context,R.layout.myspinner, monthList);
+        monthAdapter.setDropDownViewResource(R.layout.myspinner);
 
         sp_month = (Spinner)m_view.findViewById(R.id.sp_monthList);
         sp_month.setAdapter(monthAdapter);
@@ -221,6 +223,10 @@ public class DisplayGame extends Fragment {
 
                 case R.id.btn_otherMonth:
                     url = "http://www.getchu.com/all/month_title.html?genre=pc_soft&gage=all&year="+yearSelected+"&month="+monthSelected;
+                    break;
+
+                case R.id.btn_searchOtherMonth:
+
                     break;
             }
 
