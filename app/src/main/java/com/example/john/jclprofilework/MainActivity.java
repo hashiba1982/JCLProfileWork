@@ -1,8 +1,10 @@
 package com.example.john.jclprofilework;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -149,5 +151,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fm = this.getFragmentManager();
+
+        Tools.debug("backStack有多少個:" + fm.getBackStackEntryCount(), 3);
+
+        if (fm.getBackStackEntryCount() == 0) {
+            new AlertDialog.Builder(this)
+                    .setMessage("是否離開真エロGame")
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Tools.debug("維持原狀", 3);
+                        }
+                    }).show();
+        } else {
+            fm.popBackStack();
+        }
     }
 }

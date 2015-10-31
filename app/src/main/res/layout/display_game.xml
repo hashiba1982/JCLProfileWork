@@ -3,6 +3,73 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:id="@+id/rl_searchPanel"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#4e5dc3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="請選擇想要前去的月份"
+                android:id="@+id/textView6"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:gravity="center"
+                android:paddingBottom="4dp">
+
+                <Spinner
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sp_yearList"
+                    android:spinnerMode="dialog" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="年"
+                    android:id="@+id/textView8"
+                    android:paddingRight="10dp" />
+
+                <Spinner
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sp_monthList"
+                    android:spinnerMode="dialog" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="月"
+                    android:id="@+id/textView9" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GO"
+                android:id="@+id/btn_otherMonth"
+                android:background="#4093d4"
+                android:paddingTop="4dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,40 +88,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="前個月"
-            android:id="@+id/btn_lastMonth" />
+            android:id="@+id/btn_lastMonth"
+            android:background="#58b6ff" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="搜尋其他月份"
             android:id="@+id/btn_searchOtherMonth"
-            android:background="#58b6ff" />
-
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/sp_yearList"
-            android:layout_weight="1"
-            android:spinnerMode="dialog" />
-
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/sp_monthList"
-            android:layout_weight="1"
-            android:spinnerMode="dialog" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GO"
-            android:id="@+id/btn_otherMonth" />
+            android:background="#58b6ff"
+            android:layout_weight="2" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="下個月"
-            android:id="@+id/btn_nextMonth" />
+            android:id="@+id/btn_nextMonth"
+            android:background="#58b6ff" />
     </LinearLayout>
 
     <LinearLayout

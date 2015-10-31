@@ -1,6 +1,7 @@
 package com.example.john.jclprofilework.GameThisMonth;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -48,6 +49,8 @@ public class DisplayGameProfile extends Fragment {
     private Document doc;
     private Elements softImage, softTable, softStory;
 
+    private ProgressDialog progressDialog;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,6 +75,9 @@ public class DisplayGameProfile extends Fragment {
     }
 
     private void getHtmlRaw(){
+
+        progressDialog = ProgressDialog.show(getView().getContext(), "", "Loading Now...");
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -105,6 +111,10 @@ public class DisplayGameProfile extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+
+            if (progressDialog != null){
+                progressDialog.dismiss();
+            }
 
             switch (msg.what){
                 case 12001:
@@ -201,6 +211,7 @@ public class DisplayGameProfile extends Fragment {
 
         View view = View.inflate(m_context, R.layout.display_game_sample_image_item, null);
         ImageView iv_sampleImage = (ImageView)view.findViewById(R.id.iv_sampleImage);
+        iv_sampleImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         LoadBmp.getBitmap(bmpurl, iv_sampleImage, handler);
 
@@ -221,6 +232,11 @@ public class DisplayGameProfile extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
+        if (progressDialog != null){
+            progressDialog.dismiss();
+        }
+
         Tools.debug("DisplayGameProfile -- onDestroyView", 3);
     }
 

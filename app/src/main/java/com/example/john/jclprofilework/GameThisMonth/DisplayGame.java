@@ -3,6 +3,7 @@ package com.example.john.jclprofilework.GameThisMonth;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,10 +11,13 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.example.john.jclprofilework.R;
@@ -60,7 +64,11 @@ public class DisplayGame extends Fragment {
     public int yearSelected;
     public int monthSelected;
 
+    private RelativeLayout rl_searchPanel;
+
     public Message saveMsg; //保存msg資料可以不用重讀
+
+    private ProgressDialog progressDialog;
 
     public DisplayGame(){
 
@@ -75,6 +83,9 @@ public class DisplayGame extends Fragment {
     @Override
     public void onDestroyView() {
         Tools.debug("DisplayGame -- onDestroyView", 3);
+        if (progressDialog != null){
+            progressDialog.dismiss();
+        }
         super.onDestroyView();
     }
 
@@ -94,6 +105,8 @@ public class DisplayGame extends Fragment {
         btn_searchOtherMonth = (Button)getView().findViewById(R.id.btn_searchOtherMonth);
         btn_searchOtherMonth.setOnClickListener(switchOtherPage);
 
+        rl_searchPanel = (RelativeLayout)getView().findViewById(R.id.rl_searchPanel);
+
         //開始讀取資料
         if (saveMsg != null){
             setupGameData(saveMsg);
@@ -106,6 +119,9 @@ public class DisplayGame extends Fragment {
     //http://www.getchu.com/all/month_title.html?genre=pc_soft&gc=gc
 
         Tools.debug("getHtmlRaw():"+url, 3);
+
+        progressDialog = ProgressDialog.show(getView().getContext(), "", "Loading Now...");
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -204,6 +220,7 @@ public class DisplayGame extends Fragment {
                     }
 
                     url = "http://www.getchu.com/all/month_title.html?genre=pc_soft&gage=all&year="+yearNow+"&month="+monthNow;
+                    reloadGameData();
                     break;
 
                 case R.id.btn_lastMonth:
@@ -219,32 +236,57 @@ public class DisplayGame extends Fragment {
                     }
 
                     url = "http://www.getchu.com/all/month_title.html?genre=pc_soft&gage=all&year="+yearNow+"&month="+monthNow;
+                    reloadGameData();
                     break;
 
                 case R.id.btn_otherMonth:
                     url = "http://www.getchu.com/all/month_title.html?genre=pc_soft&gage=all&year="+yearSelected+"&month="+monthSelected;
+                    rl_searchPanel.setVisibility(View.GONE);
+                    btn_searchOtherMonth.setText("搜尋其他月份");
+                    reloadGameData();
                     break;
 
                 case R.id.btn_searchOtherMonth:
+                    if (rl_searchPanel.getVisibility() != View.VISIBLE){
+                        Animation animation = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.abc_fade_in);
+                        rl_searchPanel.setVisibility(View.VISIBLE);
+                        rl_searchPanel.setAnimation(animation);
+
+                        btn_searchOtherMonth.setText("關閉搜尋列表");
+
+                    }else{
+                        rl_searchPanel.setVisibility(View.GONE);
+                        btn_searchOtherMonth.setText("搜尋其他月份");
+
+                    }
 
                     break;
             }
 
-            displayGameAdapter = null;
-            doc = null;
-            productRaw = null;
-            products = null;
 
-            getHtmlRaw();
 
         }
     };
+
+    private void reloadGameData(){
+        displayGameAdapter = null;
+        doc = null;
+        productRaw = null;
+        products = null;
+
+        getHtmlRaw();
+    }
 
 
     //html解析跟資料填裝
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
+
+            if (progressDialog != null){
+                progressDialog.dismiss();
+            }
+
             switch (msg.what){
                 case 1001:
                     setupGameData(msg);
