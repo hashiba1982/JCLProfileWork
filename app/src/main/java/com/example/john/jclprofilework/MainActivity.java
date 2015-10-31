@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.john.jclprofilework.GameThisMonth.DisplayGame;
+import com.example.john.jclprofilework.Introduce.Introduce;
 import com.example.john.jclprofilework.jclModule.Tools;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView nav_view = (NavigationView) findViewById(R.id.nav_view);
         nav_view.setNavigationItemSelectedListener(this);
 
+
+        //設定首頁
+        Fragment homeFragment = new Introduce();
+        backTag = "Introduce";
+        switchFragment(homeFragment);
+
         //記住剛剛選擇的按鈕
 /*        if(null != savedInstanceState){
             navItemId = savedInstanceState.getInt(NAV_ITEM_ID, R.id.navigation_item_1);
@@ -81,6 +88,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_introduce) {
             // Handle the camera action
             Toast.makeText(getApplicationContext(), "自我介紹", Toast.LENGTH_SHORT).show();
+            Fragment Introduce = new Introduce();
+            backTag = "Introduce";
+            switchFragment(Introduce);
         } else if (id == R.id.nav_galgame) {
             Toast.makeText(getApplicationContext(), "GAL GAME專區", Toast.LENGTH_SHORT).show();
             Fragment displayGame = new DisplayGame();

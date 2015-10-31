@@ -1,0 +1,106 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.john.jclprofilework.Introduce.Introduce">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="這是一個存放作品的目錄型APP"
+            android:textSize="22dp"
+            android:padding="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="目前存放的作品有下列幾項"
+            android:textSize="22dp"
+            android:id="@+id/textView10"
+            android:padding="4dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:padding="8dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Getchu.com網站的遊戲介紹"
+                android:id="@+id/textView11"
+                android:textSize="18dp"
+                android:padding="6dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="從Getchu.com今月遊戲介紹的原始碼中，破解其連結，並取得各個遊戲的圖片，文字介紹等相關訊息，並另外刻版面放入此APP中，使其看起來像個商品介紹的目錄。"
+                android:id="@+id/textView12"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:padding="8dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="iPlay99遊戲串接"
+                android:id="@+id/textView13"
+                android:textSize="18dp"
+                android:padding="6dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自身商業作品之一，製作了登錄還有各種金流的付款頁面，並串接到其他遊戲中。當然GCM和GA也包含在內。"
+                android:id="@+id/textView14"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:gravity="center_horizontal"
+            android:padding="8dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="iPair遊戲專區頁面"
+                android:id="@+id/textView15"
+                android:textSize="18dp"
+                android:padding="6dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="並非製作整個iPair APP，而是負責裡面其中一個專區，遊戲專區整合了iPlay99遊戲平台的登陸，還有各個手機遊戲的介紹，並且支援快速進入遊戲，不需要返回桌面就能直接進入遊戲。"
+                android:id="@+id/textView16"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
