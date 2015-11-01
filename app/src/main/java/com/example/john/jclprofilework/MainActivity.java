@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,6 +81,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         navigateTo(view.getMenu().findItem(navItemId));*/
+
+
+        //取得main.xml內img1,img2的ImageView
+        ImageView iv_mypic = (ImageView)findViewById(R.id.iv_mypic);
+        iv_mypic.setImageBitmap(Tools.getRoundedCornerBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.mypic), 80.f));
+
 
     }
 
@@ -187,6 +195,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
     }
+
+
+
+
 
     @Override
     public void onBackPressed() {
