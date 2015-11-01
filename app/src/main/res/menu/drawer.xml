@@ -19,12 +19,12 @@
             android:title="iPair 遊戲專區 (商業)" />
     </group>
 
-    <item android:title="Communicate">
+<!--    <item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_menu_share"
                 android:title="About Me" />
         </menu>
-    </item>
+    </item>-->
 </menu>

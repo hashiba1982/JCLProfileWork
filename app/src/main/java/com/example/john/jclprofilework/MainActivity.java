@@ -4,7 +4,10 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -97,12 +100,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             backTag = "DisplayGame";
             switchFragment(displayGame);
         } else if (id == R.id.nav_sdk) {
-            Toast.makeText(getApplicationContext(), "iPlay99 SDK", Toast.LENGTH_SHORT).show();
+            try{
+                Intent it = getPackageManager().getLaunchIntentForPackage("com.platform7725.baijin.nvwang.ipay99");
+                it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(it);
+            }catch (NullPointerException e){
+                Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.platform7725.baijin.nvwang.ipay99"));
+                startActivity(it);
+            }catch (ActivityNotFoundException e){
+                Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.platform7725.baijin.nvwang.ipay99"));
+                startActivity(it);
+            }
         } else if (id == R.id.nav_gamearea) {
-            Toast.makeText(getApplicationContext(), "iPair遊戲專區", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_about) {
-            Toast.makeText(getApplicationContext(), "關於我", Toast.LENGTH_SHORT).show();
-        }
+
+            try{
+                Intent it = getPackageManager().getLaunchIntentForPackage("com.ipart.android");
+                it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(it);
+            }catch (NullPointerException e){
+                Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.ipart.android"));
+                startActivity(it);
+            }catch (ActivityNotFoundException e){
+                Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.ipart.android"));
+                startActivity(it);
+            }
+
+        } /*else if (id == R.id.nav_about) {
+            Toast.makeText(getApplicationContext(), "關於我 目前尚未完工", Toast.LENGTH_SHORT).show();
+        }*/
 
 
         //contentView.setText(item.getTitle());
